@@ -53,7 +53,7 @@
 	path = lib/libedit
 	url = git@github.com:xnuports/libedit.git
 [submodule "lib/lib"]
-	path = lib/lib
+	path = lib/libz
 	url = git@github.com:xnuports/zlib.git
 [submodule "lib/libcurses"]
 	path = lib/libcurses
