@@ -64,3 +64,6 @@
 [submodule "lib/libxo"]
 	path = lib/libxo
 	url = git@github.com:xnuports/libxo.git
+[submodule "lib/libpam"]
+	path = lib/libpam
+	url = git@github.com:xnuports/pam.git
