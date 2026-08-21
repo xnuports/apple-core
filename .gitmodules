@@ -58,3 +58,6 @@
 [submodule "lib/libcurses"]
 	path = lib/libcurses
 	url = git@github.com:xnuports/Libcurses.git
+[submodule "lib/libmd"]
+	path = lib/libmd
+	url = https://github.com/apple-oss-distributions/libmd.git
