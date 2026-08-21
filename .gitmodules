@@ -52,3 +52,6 @@
 [submodule "lib/libedit"]
 	path = lib/libedit
 	url = git@github.com:xnuports/libedit.git
+[submodule "lib/lib"]
+	path = lib/lib
+	url = git@github.com:xnuports/zlib.git
