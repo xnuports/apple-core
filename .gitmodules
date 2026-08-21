@@ -52,3 +52,6 @@
 [submodule "src/bc"]
 	path = src/bc
 	url = https://github.com/xnuports/bc.git
+[submodule "tools/fix-macosx-internal-sdk"]
+	path = tools/fix-macosx-internal-sdk
+	url = https://github.com/xnuports/fix-macosx-internal-sdk.git
