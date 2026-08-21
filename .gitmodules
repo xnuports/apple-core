@@ -77,5 +77,5 @@
 	path = lib/libpcap
 	url = git@github.com:xnuports/libpcap.git
 [submodule "krb5"]
-	path = krb5
+	path = lib/krb5
 	url = git@github.com:xnuports/krb5.git
