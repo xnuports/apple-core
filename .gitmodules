@@ -10,3 +10,6 @@
 [submodule "src/bootstrap_cmds"]
 	path = src/bootstrap_cmds
 	url = https://github.com/xnuports/bootstrap_cmds.git
+[submodule "src/misc_cmds"]
+	path = src/misc_cmds
+	url = https://github.com/xnuports/misc_cmds.git
