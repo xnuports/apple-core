@@ -49,3 +49,6 @@
 [submodule "src/system_cmds"]
 	path = src/system_cmds
 	url = https://github.com/xnuports/system_cmds.git
+[submodule "src/bc"]
+	path = src/bc
+	url = https://github.com/xnuports/bc.git
