@@ -73,3 +73,6 @@
 [submodule "OpenBSM"]
 	path = OpenBSM
 	url = git@github.com:xnuports/OpenBSM.git
+[submodule "ipsec"]
+	path = ipsec
+	url = git@github.com:xnuports/ipsec.git
