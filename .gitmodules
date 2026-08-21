@@ -25,3 +25,6 @@
 [submodule "src/diskdev_cmds"]
 	path = src/diskdev_cmds
 	url = https://github.com/xnuports/diskdev_cmds.git
+[submodule "src/file_cmds"]
+	path = src/file_cmds
+	url = https://github.com/xnuports/file_cmds.git
