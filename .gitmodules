@@ -1,3 +1,6 @@
 [submodule "lib/libutil"]
 	path = lib/libutil
 	url = https://github.com/xnuports/libutil.git
+[submodule "src/at_cmds"]
+	path = src/at_cmds
+	url = https://github.com/xnuports/at_cmds.git
