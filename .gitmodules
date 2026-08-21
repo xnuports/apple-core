@@ -37,3 +37,9 @@
 [submodule "src/patch_cmds"]
 	path = src/patch_cmds
 	url = https://github.com/xnuports/patch_cmds.git
+[submodule "src/remote_cmds"]
+	path = src/remote_cmds
+	url = https://github.com/xnuports/remote_cmds.git
+[submodule "src/shell_cmds"]
+	path = src/shell_cmds
+	url = https://github.com/xnuports/shell_cmds.git
