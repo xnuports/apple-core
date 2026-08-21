@@ -79,3 +79,6 @@
 [submodule "tools/xcrmint"]
 	path = tools/xcrmint
 	url = https://github.com/xnuports/xcrmint.git
+[submodule "lib/bzip2"]
+	path = lib/bzip2
+	url = https://github.com/xnuports/bzip2.git
