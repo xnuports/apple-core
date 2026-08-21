@@ -49,3 +49,6 @@
 [submodule "tools/fix-macosx-internal-sdk"]
 	path = tools/fix-macosx-internal-sdk
 	url = https://github.com/xnuports/fix-macosx-internal-sdk.git
+[submodule "lib/libedit"]
+	path = lib/libedit
+	url = git@github.com:xnuports/libedit.git
