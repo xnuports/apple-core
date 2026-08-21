@@ -28,3 +28,6 @@
 [submodule "src/file_cmds"]
 	path = src/file_cmds
 	url = https://github.com/xnuports/file_cmds.git
+[submodule "src/mail_cmds"]
+	path = src/mail_cmds
+	url = https://github.com/xnuports/mail_cmds.git
