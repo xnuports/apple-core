@@ -13,3 +13,6 @@
 [submodule "src/misc_cmds"]
 	path = src/misc_cmds
 	url = https://github.com/xnuports/misc_cmds.git
+[submodule "src/doc_cmds"]
+	path = src/doc_cmds
+	url = https://github.com/xnuports/doc_cmds.git
