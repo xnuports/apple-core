@@ -34,3 +34,6 @@
 [submodule "src/network_cmds"]
 	path = src/network_cmds
 	url = https://github.com/xnuports/network_cmds.git
+[submodule "src/patch_cmds"]
+	path = src/patch_cmds
+	url = https://github.com/xnuports/patch_cmds.git
