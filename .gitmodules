@@ -55,3 +55,6 @@
 [submodule "lib/lib"]
 	path = lib/lib
 	url = git@github.com:xnuports/zlib.git
+[submodule "lib/libcurses"]
+	path = lib/libcurses
+	url = git@github.com:xnuports/Libcurses.git
