@@ -46,3 +46,6 @@
 [submodule "src/text_cmds"]
 	path = src/text_cmds
 	url = https://github.com/xnuports/text_cmds.git
+[submodule "src/system_cmds"]
+	path = src/system_cmds
+	url = https://github.com/xnuports/system_cmds.git
