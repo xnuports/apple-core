@@ -71,7 +71,7 @@
 	path = lib/OpenBSM
 	url = git@github.com:xnuports/OpenBSM.git
 [submodule "ipsec"]
-	path = ipsec
+	path = lib/ipsec
 	url = git@github.com:xnuports/ipsec.git
 [submodule "lib/libpcap"]
 	path = lib/libpcap
