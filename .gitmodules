@@ -65,7 +65,7 @@
 	path = lib/libpam
 	url = git@github.com:xnuports/pam.git
 [submodule "bsm"]
-	path = bsm
+	path = lib/bsm
 	url = git@github.com:xnuports/bsm.git
 [submodule "OpenBSM"]
 	path = OpenBSM
