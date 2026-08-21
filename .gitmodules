@@ -4,3 +4,6 @@
 [submodule "src/at_cmds"]
 	path = src/at_cmds
 	url = https://github.com/xnuports/at_cmds.git
+[submodule "src/basic_cmds"]
+	path = src/basic_cmds
+	url = https://github.com/xnuports/basic_cmds.git
