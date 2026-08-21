@@ -82,3 +82,6 @@
 [submodule "lib/bzip2"]
 	path = lib/bzip2
 	url = https://github.com/xnuports/bzip2.git
+[submodule "lib/xz"]
+	path = lib/xz
+	url = https://github.com/xnuports/xz.git
