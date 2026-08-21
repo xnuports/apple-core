@@ -76,3 +76,6 @@
 [submodule "ipsec"]
 	path = ipsec
 	url = git@github.com:xnuports/ipsec.git
+[submodule "lib/libpcap"]
+	path = lib/libpcap
+	url = git@github.com:xnuports/libpcap.git
