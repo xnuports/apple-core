@@ -49,9 +49,6 @@
 [submodule "tools/xcrmint"]
 	path = tools/xcrmint
 	url = https://github.com/xnuports/xcrmint.git
-[submodule "lib/xz"]
-	path = lib/xz
-	url = https://github.com/xnuports/xz.git
 [submodule "lib/libtelnet"]
 	path = lib/libtelnet
 	url = https://github.com/xnuports/libtelnet.git
