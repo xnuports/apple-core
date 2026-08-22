@@ -46,9 +46,6 @@
 [submodule "lib/libmd"]
 	path = lib/libmd
 	url = https://github.com/xnuports/libmd.git
-[submodule "lib/libxo"]
-	path = lib/libxo
-	url = https://github.com/xnuports/libxo.git
 [submodule "tools/xcrmint"]
 	path = tools/xcrmint
 	url = https://github.com/xnuports/xcrmint.git
