@@ -43,45 +43,15 @@
 [submodule "src/bc"]
 	path = src/bc
 	url = https://github.com/xnuports/bc.git
-[submodule "lib/libedit"]
-	path = lib/libedit
-	url = https://github.com/xnuports/libedit.git
-[submodule "lib/libz"]
-	path = lib/libz
-	url = https://github.com/xnuports/zlib.git
-[submodule "lib/libcurses"]
-	path = lib/libcurses
-	url = https://github.com/xnuports/Libcurses.git
 [submodule "lib/libmd"]
 	path = lib/libmd
 	url = https://github.com/xnuports/libmd.git
 [submodule "lib/libxo"]
 	path = lib/libxo
 	url = https://github.com/xnuports/libxo.git
-[submodule "lib/libpam"]
-	path = lib/libpam
-	url = https://github.com/xnuports/pam.git
-[submodule "bsm"]
-	path = lib/bsm
-	url = https://github.com/xnuports/bsm.git
-[submodule "OpenBSM"]
-	path = lib/OpenBSM
-	url = https://github.com/xnuports/OpenBSM.git
-[submodule "ipsec"]
-	path = lib/ipsec
-	url = https://github.com/xnuports/ipsec.git
-[submodule "lib/libpcap"]
-	path = lib/libpcap
-	url = https://github.com/xnuports/libpcap.git
-[submodule "krb5"]
-	path = lib/krb5
-	url = https://github.com/xnuports/krb5.git
 [submodule "tools/xcrmint"]
 	path = tools/xcrmint
 	url = https://github.com/xnuports/xcrmint.git
-[submodule "lib/bzip2"]
-	path = lib/bzip2
-	url = https://github.com/xnuports/bzip2.git
 [submodule "lib/xz"]
 	path = lib/xz
 	url = https://github.com/xnuports/xz.git
