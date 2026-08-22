@@ -29,16 +29,23 @@ T_TARGET?=	${TOP}/build/release/${T_BIN}/${T_PROG}
 
 .include "${TOP}/mk/darwintools.sys.mk"
 
+# Per-tool fragment loads first so T_SRCS/T_NOBUILD/etc. influence
+# everything below.
+sinclude ${TOP}/mk/tool.d/${T_PROG}.mk
+
 .PATH: ${T_SRCDIR}
 
 # ------------------------------------------------------------------
-# Source discovery
+# Source resolution
 #
-# Default: every .c/.y/.l file in the tool directory.  Yacc and lex
-# inputs are expanded to their generated C sources up front so the
-# rest of the file deals only in compilable sources.
+# Explicit list wins (from mk/tool.d/<prog>.mk); otherwise discover
+# every .c/.y/.l file in the tool directory.  Yacc and lex inputs are
+# expanded to their generated C sources up front so the rest of the
+# file deals only in compilable sources.
 # ------------------------------------------------------------------
-.if !defined(T_SRCS)
+.if defined(T_SRCS)
+SRCS=	${T_SRCS}
+.else
 _RAW!=		ls ${T_SRCDIR}/*.c ${T_SRCDIR}/*.y ${T_SRCDIR}/*.l 2>/dev/null || true
 SRCS!=		for f in ${_RAW}; do basename "$$f"; done 2>/dev/null || true
 .endif
@@ -101,9 +108,6 @@ ${T_OBJDIR}/${s:T:R}.o: ${T_SRCDIR}/${s}
 	${CC} ${CPPFLAGS} ${CFLAGS} ${T_CFLAGS} -c ${.ALLSRC} -o ${.TARGET}
 . endif
 .endfor
-
-# Per-tool fragment comes after defaults so it can override anything.
-sinclude ${TOP}/mk/tool.d/${T_PROG}.mk
 
 ${T_TARGET}: ${OBJS}
 	@mkdir -p ${.TARGET:H}
