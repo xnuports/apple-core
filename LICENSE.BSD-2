@@ -1,13 +1,17 @@
 BSD 2-Clause License
 
 Applies to src/bc (bc, dc), src/text_cmds/jq/modules/oniguruma, the
-NetBSD/FreeBSD-derived portions of lib/libutil, src/misc_cmds/ncal, and
-every other component whose sources carry a BSD 2-Clause notice.
+NetBSD/FreeBSD-derived portions of lib/libutil, src/misc_cmds/ncal,
+src/bsd_additions/{timeout,ee}, and every other component whose sources
+carry a BSD 2-Clause notice.
 
 Copyright (c) 2018-2025 Gavin D. Howard <gavin@gavinhoward.com>
 Copyright (c) 2002-2021 K.Kosako <kkosako0@gmail.com>
 Copyright (c) 1997, 1998, 1999, 2002 The NetBSD Foundation, Inc.
 Copyright (c) 1997 Wolfgang Helbig
+Copyright (c) 2014 Baptiste Daroussin <bapt@FreeBSD.org>
+Copyright (c) 2014 Vsevolod Stakhov <vsevolod@FreeBSD.org>
+Copyright (c) 2009 Hugh Mahon
 Copyright (c) 2026 Sunneva N. Mariu <sunnevanattsol@gmail.com>
 
 Per-file SPDX identifiers and copyright banners govern where they differ

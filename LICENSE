@@ -56,7 +56,15 @@ src/patch_cmds           BSD-3 + permissive UC Regents; patch.c (c) 1986
                                             Larry Wall (retain-notice condition);
                                             backupfile.c (c) 1990 Free Software
                                             Foundation, Inc. (unrestricted);
-                                            diffstat X11-style, see section 6
+                                            diffstat X11-style, see section 7
+src/bsd_additions         BSD-3/2/4 mixed    factor (c) 1989, 1993 UC Regents (Landon
+                                            Curt Noll contribution); timeout (c) 2014
+                                            Baptiste Daroussin, Vsevolod Stakhov;
+                                            indent BSD-4-Clause -- Sun Microsystems
+                                            (1985), Board of Trustees of the University
+                                            of Illinois (1976), UC Regents (1980,
+                                            1993), see section 5; ee (c) 2009
+                                            Hugh Mahon
 src/remote_cmds          BSD-3-Clause       The Regents of the University of
                                             California
 src/shell_cmds           BSD-3-Clause       The Regents of the University of
@@ -162,7 +170,48 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 --------------------------------------------------------------------------------
-5. MIT LICENSE
+5. BSD 4-CLAUSE LICENSE
+--------------------------------------------------------------------------------
+
+Applies solely to src/bsd_additions/indent.
+
+Copyright (c) 1985 Sun Microsystems, Inc.
+Copyright (c) 1976 Board of Trustees of the University of Illinois.
+Copyright (c) 1980, 1993 The Regents of the University of California.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. All advertising materials mentioning features or use of this software must
+   display the following acknowledgement: This product includes software
+   developed by the University of California, Berkeley and its contributors.
+
+4. Neither the name of the copyright holder nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+--------------------------------------------------------------------------------
+6. MIT LICENSE
 --------------------------------------------------------------------------------
 
 Applies to src/text_cmds/jq and tools/xcrmint (base project).
@@ -190,7 +239,7 @@ SOFTWARE.
 
 
 --------------------------------------------------------------------------------
-6. X11-STYLE LICENSE (Thomas E. Dickey -- src/patch_cmds/diffstat)
+7. X11-STYLE LICENSE (Thomas E. Dickey -- src/patch_cmds/diffstat)
 --------------------------------------------------------------------------------
 
 Copyright 1994-2019,2021 by Thomas E. Dickey
@@ -214,7 +263,7 @@ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 --------------------------------------------------------------------------------
-7. RSA DATA SECURITY NOTICE (lib/libmd)
+8. RSA DATA SECURITY NOTICE (lib/libmd)
 --------------------------------------------------------------------------------
 
 Copyright (C) 1990-2, RSA Data Security, Inc. Created 1990. All rights
@@ -236,7 +285,7 @@ warranty of any kind.
 
 
 --------------------------------------------------------------------------------
-8. APPLE PUBLIC SOURCE LICENSE VERSION 2.0
+9. APPLE PUBLIC SOURCE LICENSE VERSION 2.0
 --------------------------------------------------------------------------------
 
 Applies to the files in src/network_cmds and src/system_cmds carrying Apple
