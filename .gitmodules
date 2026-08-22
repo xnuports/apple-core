@@ -58,6 +58,3 @@
 [submodule "lib/libtelnet"]
 	path = lib/libtelnet
 	url = https://github.com/xnuports/libtelnet.git
-[submodule "lib/libsysmon"]
-	path = lib/libsysmon
-	url = https://github.com/xnuports/libsysmon.git
