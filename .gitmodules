@@ -52,3 +52,6 @@
 [submodule "lib/libtelnet"]
 	path = lib/libtelnet
 	url = https://github.com/xnuports/libtelnet.git
+[submodule "lib/libxo"]
+	path = lib/libxo
+	url = https://github.com/xnuports/libxo.git
