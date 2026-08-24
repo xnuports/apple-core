@@ -242,7 +242,9 @@ PROGS+=	system_cmds/vifs vifs usr/sbin
 PROGS+=	system_cmds/vipw vipw usr/sbin
 PROGS+=	system_cmds/zdump zdump usr/sbin
 PROGS+=	system_cmds/zic zic usr/sbin
-PROGS+=	adv_cmds/genwrap genwrap usr/sbin
+# genwrap: excluded -- an /AppleInternal-only wrapper generator, not part
+# of the stock userland (SUBMODULE_AUDIT.md §2).
+#PROGS+=	adv_cmds/genwrap genwrap usr/sbin
 PROGS+=	bsd_additions/ee ee usr/bin
 PROGS+=	bsd_additions/factor factor usr/bin
 PROGS+=	bsd_additions/timeout timeout usr/bin
