@@ -57,4 +57,4 @@
 	url = https://github.com/xnuports/libxo.git
 [submodule "src/hfs"]
 	path = src/hfs
-	url = git@github.com:xnuports/hfs.git
+	url = https://github.com/xnuports/hfs.git
