@@ -39,7 +39,7 @@ LIBUTIL_OBJS+=	${OBJBASE}/libutil/${f:R}.o
 .endfor
 
 all: ${OBJBASE}/libutil.a ${OBJBASE}/libxo.a ${OBJBASE}/libnetcmds.a \
-	${OBJBASE}/libtelnet.a ${OBJBASE}/libfsck_hfs.a
+	${OBJBASE}/libtelnet.a
 
 # --- libnetcmds ---------------------------------------------------
 #
@@ -170,6 +170,12 @@ ${OBJBASE}/libtelnet.a: ${LIBTELNET_OBJS}
 	${AR} crs ${.TARGET} ${LIBTELNET_OBJS}
 
 # --- libfsck_hfs ---------------------------------------------------
+#
+# NOT in `all`: dfalib needs the classic <Errors.h>, which Apple no longer
+# ships, so this target cannot compile yet (see mk/tool.d/fsck_hfs.mk).
+# Build it explicitly once that header is available:
+#
+#	bmake -C lib build/lib/libfsck_hfs.a
 #
 # fsck_hfs' support library, from the hfs submodule rather than lib/.
 # Sources are discovered so the dfalib set tracks upstream; DecompMakeData
