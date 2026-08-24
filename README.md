@@ -18,7 +18,8 @@ A handful of tools missing from Apple's set are vendored from FreeBSD in
 Requires Xcode (or the Command Line Tools) and `bmake`.
 
 ```bash
-git clone --recurse-submodules <repo> && cd apple-core && bmake
+git clone --recurse-submodules https://github.com/xnuports/apple-core.git
+cd apple-core && bmake
 ```
 
 Binaries land in `build/release/`, laid out the way stock macOS installs them:
