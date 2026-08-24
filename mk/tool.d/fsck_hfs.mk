@@ -1,19 +1,31 @@
 # fsck_hfs: the checker proper lives in lib_fsck_hfs (dfalib); this is the
-# driver.  See mk/with-libfsck_hfs.mk.
+# driver.  See mk/with-libfsck_hfs.mk for the dfalib build flags.
 #
-# BLOCKED: dfalib's SRuntime.h includes <Errors.h>, the classic Mac OS
-# error-code header.  Apple no longer ships it: CarbonCore's MacErrors.h
-# covers 11 of the 16 codes dfalib uses, and MacTypes.h supplies noErr,
-# but fsBTInvalidNodeErr, vcInvalidExtentErr, hardwareGoneErr and
-# fsEndOfIterationErr are in no public SDK, in the internal SDK, or in the
-# hfs sources themselves -- Apple builds this against a full CarbonHeaders
-# set we do not have.
+# fsck_messages.c reports progress through FSKit's C hooks when running on an
+# internal build; those come from our staged
+# include/FSKit/FSKitCFunctions_private.h and resolve against the SDK's
+# public FSKit.framework.
 #
-# Their numeric values are deliberately NOT guessed: a wrong OSErr value in
-# a filesystem checker misclassifies errors silently.  Supply a real
-# Errors.h (or the four values from an authoritative source) and drop this
-# note; the wiring below is otherwise complete and lib/Makefile already
-# builds libfsck_hfs.a.
-T_NOBUILD=	yes
+# dfalib's SControl.c reads a version banner that Apple's build produces with
+# vers_string(1) and that no source in the tree defines.  Generate it here in
+# Apple's format -- the shipped /System/Library/Filesystems/hfs.fs/Contents/
+# Resources/fsck_hfs contains "@(#)PROGRAM:fsck_hfs  PROJECT:hfs-715.120.4",
+# and SControl.c strstr()s for "PROJECT:" to pull the version out.
+
+FSCKHFS_GEN=	${TOP}/build/gen/fsck_hfs
+HFS_VERSION?=	hfs-715.120.4
+
+T_SRCS=		fsck_hfs.c fsck_messages.c utilities.c \
+		build/gen/fsck_hfs/fsck_hfs_vers.c
+
 .include "${TOP}/mk/with-libfsck_hfs.mk"
-T_LDADD+=	-framework CoreFoundation -framework IOKit
+T_LDADD+=	-framework CoreFoundation -framework IOKit -framework FSKit
+
+${FSCKHFS_GEN}/fsck_hfs_vers.c:
+	@mkdir -p ${FSCKHFS_GEN}
+	@${ECHO} 'const unsigned char fsck_hfsVersionString[] =' > ${.TARGET}
+	@${ECHO} '    "@(#)PROGRAM:fsck_hfs  PROJECT:${HFS_VERSION}\\n";' >> ${.TARGET}
+
+.for s in ${T_SRCS}
+${T_OBJDIR}/${s:T:R}.o: ${FSCKHFS_GEN}/fsck_hfs_vers.c
+.endfor
