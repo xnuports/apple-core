@@ -22,6 +22,7 @@ CXX?=		c++
 CXXFLAGS?=	${CFLAGS}
 
 AR?=		ar
+MIG?=		mig
 YACC?=		yacc
 LEX?=		lex
 
