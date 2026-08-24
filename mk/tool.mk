@@ -143,15 +143,18 @@ ${T_OBJDIR}/${s:T}.lex.c: ${T_SRCDIR}/${s}
 ${T_OBJDIR}/${s:T}.lex.o: ${T_OBJDIR}/${s:T}.lex.c
 	${CC} ${CPPFLAGS} ${CFLAGS} ${T_CFLAGS} -c ${.IMPSRC} -o ${.TARGET}
 . elif ${s:M*.cc} != "" || ${s:M*.cpp} != ""
-# C++ source.
+# C++ source.  Compile the named source explicitly (not ${.ALLSRC}) so a
+# fragment may add generated-header prerequisites without feeding them to
+# the compiler.
 ${T_OBJDIR}/${s:T:R}.o: ${T_SRCDIR}/${s}
 	@mkdir -p ${T_OBJDIR}
-	${CXX} ${CPPFLAGS} ${CXXFLAGS} ${T_CFLAGS} -c ${.ALLSRC} -o ${.TARGET}
+	${CXX} ${CPPFLAGS} ${CXXFLAGS} ${T_CFLAGS} -c ${T_SRCDIR}/${s} -o ${.TARGET}
 . else
-# Plain C source.
+# Plain C source.  Compile the named source explicitly (not ${.ALLSRC})
+# so header prerequisites added by a fragment are not passed to clang.
 ${T_OBJDIR}/${s:T:R}.o: ${T_SRCDIR}/${s}
 	@mkdir -p ${T_OBJDIR}
-	${CC} ${CPPFLAGS} ${CFLAGS} ${T_CFLAGS} -c ${.ALLSRC} -o ${.TARGET}
+	${CC} ${CPPFLAGS} ${CFLAGS} ${T_CFLAGS} -c ${T_SRCDIR}/${s} -o ${.TARGET}
 . endif
 .endfor
 
