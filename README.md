@@ -47,14 +47,15 @@ bmake MK_DAEMONS=yes            # telnetd, tftpd, rtadvd, getty, …
 bmake MK_PRIVATE_FRAMEWORKS=yes # tools needing FSKit/APFS/kextmanager
 ```
 
-Current state: **213 of 214** programs build by default, **220 of 221** with
-all tiers on. The one that doesn't — `ifconfig` — needs xnu headers newer
-than any published set; the reason is recorded in `mk/tool.d/ifconfig.mk`.
+Current state: **every tool in the inventory builds** — 214 of 214 by default,
+221 of 221 with all tiers on, from a clean tree with no errors.
 
-A few tools build with documented caveats rather than as exact ports:
-`timeout` cannot track descendants past its direct child (Darwin has no
-subreaper API), and the FSKit-backed tools report FSKit as unavailable, which
-is Apple's own fallback for that case. Each says so in its fragment.
+Three build with caveats rather than as exact ports, each documented in its
+own `mk/tool.d/<tool>.mk`: `timeout` cannot follow descendants past its direct
+child (Darwin has no subreaper API), the FSKit-backed tools report FSKit as
+unavailable — Apple's own fallback for that case — and `ifconfig`'s two newer
+netem model values are recovered from the shipped binary rather than any
+published header.
 
 ## Layout
 
