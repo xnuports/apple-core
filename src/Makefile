@@ -12,17 +12,23 @@ TOP?=		${.CURDIR}
 
 all:
 .for d p b in ${PROGS}
+.if empty(DISABLED_PROGS:M${p})
 	-@${MAKE} -f ${TOP}/mk/tool.mk TOP=${TOP} \
 		T_DIR=${d} T_PROG=${p} T_BIN=${b}
+.endif
 .endfor
 
 clean:
 .for d p b in ${PROGS}
+.if empty(DISABLED_PROGS:M${p})
 	-@${MAKE} -f ${TOP}/mk/tool.mk TOP=${TOP} \
 		T_DIR=${d} T_PROG=${p} T_BIN=${b} clean
+.endif
 .endfor
 
 list-progs:
 .for d p b in ${PROGS}
+.if empty(DISABLED_PROGS:M${p})
 	@${ECHO} "${b}/${p}\t<- src/${d}"
+.endif
 .endfor

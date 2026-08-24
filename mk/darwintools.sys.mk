@@ -18,6 +18,8 @@ TOP?=		${.CURDIR}
 CC?=		cc
 CPPFLAGS+=	-I${TOP}/include -I${TOP}/build/include
 CFLAGS?=	-O2 -g -Wall -Wno-unused-parameter
+CXX?=		c++
+CXXFLAGS?=	${CFLAGS}
 
 AR?=		ar
 YACC?=		yacc
@@ -26,5 +28,34 @@ LEX?=		lex
 INSTALL_DIR=	mkdir -p
 
 ECHO=		echo
+
+#
+# Optional program tiers (Option C -- see SUBMODULE_AUDIT.md, PROGRESS.md).
+# Both default OFF; the strict coreutils-like set ships by default.
+# Enable with e.g.:
+#
+#	bmake MK_DIAGNOSTICS=yes MK_DAEMONS=yes
+#
+MK_DIAGNOSTICS?=	no
+MK_DAEMONS?=		no
+
+# System diagnostics / developer tools -- ship with macOS but are not
+# part of the strict coreutils-like default set (SUBMODULE_AUDIT.md §2).
+DIAG_PROGS=	fs_usage latency sc_usage ltop lsmp lskq hostinfo zprint \
+		zlog mslutil kpgo mean stackshot gcore memory_pressure \
+		vm_stat vm_purgeable_stat purge iostat iosim cpuctl \
+		proc_uuid_policy dynamic_pager
+
+# Network / service daemons -- not CLI userland; excluded by default.
+DAEMON_PROGS=	telnetd tftpd talkd rtadvd rarpd spray kdumpd getty atrun
+
+# Names filtered out of the build loop when their tier is disabled.
+DISABLED_PROGS=
+.if ${MK_DIAGNOSTICS:tl} != "yes"
+DISABLED_PROGS+=	${DIAG_PROGS}
+.endif
+.if ${MK_DAEMONS:tl} != "yes"
+DISABLED_PROGS+=	${DAEMON_PROGS}
+.endif
 
 .PHONY: all clean
