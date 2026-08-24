@@ -34,10 +34,11 @@ ECHO=		echo
 # Both default OFF; the strict coreutils-like set ships by default.
 # Enable with e.g.:
 #
-#	bmake MK_DIAGNOSTICS=yes MK_DAEMONS=yes
+#	bmake MK_DIAGNOSTICS=yes MK_DAEMONS=yes MK_PRIVATE_FRAMEWORKS=yes
 #
 MK_DIAGNOSTICS?=	no
 MK_DAEMONS?=		no
+MK_PRIVATE_FRAMEWORKS?=	no
 
 # System diagnostics / developer tools -- ship with macOS but are not
 # part of the strict coreutils-like default set (SUBMODULE_AUDIT.md §2).
@@ -49,6 +50,13 @@ DIAG_PROGS=	fs_usage latency sc_usage ltop lsmp lskq hostinfo zprint \
 # Network / service daemons -- not CLI userland; excluded by default.
 DAEMON_PROGS=	telnetd tftpd talkd rtadvd rarpd spray kdumpd getty atrun
 
+# Tools that link Apple private frameworks absent from the public SDK:
+# FSKit (fsck_fskit, newfs_fskit, fstyp), APFS (mount), the quota disk
+# library (quotacheck), and the kextmanager MIG interface (reboot,
+# shutdown).  Off by default until those frameworks are available.
+FRAMEWORK_PROGS=	fsck_fskit newfs_fskit fstyp mount quotacheck \
+			reboot shutdown
+
 # Names filtered out of the build loop when their tier is disabled.
 DISABLED_PROGS=
 .if ${MK_DIAGNOSTICS:tl} != "yes"
@@ -56,6 +64,9 @@ DISABLED_PROGS+=	${DIAG_PROGS}
 .endif
 .if ${MK_DAEMONS:tl} != "yes"
 DISABLED_PROGS+=	${DAEMON_PROGS}
+.endif
+.if ${MK_PRIVATE_FRAMEWORKS:tl} != "yes"
+DISABLED_PROGS+=	${FRAMEWORK_PROGS}
 .endif
 
 .PHONY: all clean
