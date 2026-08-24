@@ -55,3 +55,6 @@
 [submodule "lib/libxo"]
 	path = lib/libxo
 	url = https://github.com/xnuports/libxo.git
+[submodule "src/hfs"]
+	path = src/hfs
+	url = git@github.com:xnuports/hfs.git
