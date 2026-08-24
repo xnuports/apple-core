@@ -15,6 +15,13 @@ TOP?=		${.CURDIR}
 LIBUTIL_DIR=	${TOP}/lib/libutil
 LIBXO_DIR=	${TOP}/lib/libxo
 LIBTELNET_DIR=	${TOP}/lib/libtelnet
+LIBFSCKHFS_DIR=	${TOP}/src/hfs/lib_fsck_hfs
+
+# dfalib's SRuntime.h still uses the classic Mac Memory Manager API
+# (NewPtr/DisposeHandle/BlockMoveData); MacMemory.h lives inside the SDK's
+# CarbonCore framework, which is not on the default include path.
+SDKROOT_PATH!=	xcrun --show-sdk-path 2>/dev/null || echo /
+CARBONCORE_HDRS=	${SDKROOT_PATH}/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers
 OBJBASE=	${TOP}/build/lib
 
 LIBUTIL_SRCS=	humanize_number.c pidfile.c trimdomain.c realhostname.c \
@@ -32,7 +39,7 @@ LIBUTIL_OBJS+=	${OBJBASE}/libutil/${f:R}.o
 .endfor
 
 all: ${OBJBASE}/libutil.a ${OBJBASE}/libxo.a ${OBJBASE}/libnetcmds.a \
-	${OBJBASE}/libtelnet.a
+	${OBJBASE}/libtelnet.a ${OBJBASE}/libfsck_hfs.a
 
 # --- libnetcmds ---------------------------------------------------
 #
@@ -79,6 +86,22 @@ ${OBJBASE}/libutil/${f:R}.o: ${LIBUTIL_DIR}/${f}
 		${CFLAGS} -c ${.ALLSRC} -o ${.TARGET}
 . endif
 .endfor
+
+# wipefs is Apple's addition to libutil and is C++, so it gets its own rule.
+# newfs_hfs (and newfs_* generally) call wipefs_alloc()/wipefs_wipe().
+.if exists(${LIBUTIL_DIR}/wipefs.cpp)
+LIBUTIL_CXX_SRCS=	wipefs.cpp ExtentManager.cpp
+.for f in ${LIBUTIL_CXX_SRCS}
+. if exists(${LIBUTIL_DIR}/${f})
+LIBUTIL_OBJS+=	${OBJBASE}/libutil/${f:R}.o
+
+${OBJBASE}/libutil/${f:R}.o: ${LIBUTIL_DIR}/${f}
+	@mkdir -p ${OBJBASE}/libutil
+	${CXX} ${CPPFLAGS} -I${LIBUTIL_DIR} -I${TOP}/include \
+		${CXXFLAGS} -c ${.ALLSRC} -o ${.TARGET}
+. endif
+.endfor
+.endif
 
 ${OBJBASE}/libutil.a: ${LIBUTIL_OBJS}
 	rm -f ${.TARGET}
@@ -145,6 +168,33 @@ ${OBJBASE}/libtelnet/${f:R}.o: ${LIBTELNET_DIR}/${f}
 ${OBJBASE}/libtelnet.a: ${LIBTELNET_OBJS}
 	rm -f ${.TARGET}
 	${AR} crs ${.TARGET} ${LIBTELNET_OBJS}
+
+# --- libfsck_hfs ---------------------------------------------------
+#
+# fsck_hfs' support library, from the hfs submodule rather than lib/.
+# Sources are discovered so the dfalib set tracks upstream; DecompMakeData
+# is excluded -- it is a build-time generator with its own main(), not
+# library code.
+
+LIBFSCKHFS_SRCS!=	cd ${LIBFSCKHFS_DIR} && ls *.c dfalib/*.c 2>/dev/null | grep -v DecompMakeData || true
+
+LIBFSCKHFS_OBJS=
+.for f in ${LIBFSCKHFS_SRCS}
+LIBFSCKHFS_OBJS+=	${OBJBASE}/fsck_hfs/${f:T:R}.o
+.endfor
+
+.for f in ${LIBFSCKHFS_SRCS}
+${OBJBASE}/fsck_hfs/${f:T:R}.o: ${LIBFSCKHFS_DIR}/${f}
+	@mkdir -p ${OBJBASE}/fsck_hfs
+	${CC} ${CPPFLAGS} -I${LIBFSCKHFS_DIR} -I${LIBFSCKHFS_DIR}/dfalib \
+		-I${TOP}/src/hfs/fsck_hfs -I${TOP}/include \
+		-I${CARBONCORE_HDRS} \
+		${CFLAGS} -c ${.ALLSRC} -o ${.TARGET}
+.endfor
+
+${OBJBASE}/libfsck_hfs.a: ${LIBFSCKHFS_OBJS}
+	rm -f ${.TARGET}
+	${AR} crs ${.TARGET} ${LIBFSCKHFS_OBJS}
 
 clean:
 	rm -rf ${OBJBASE}
