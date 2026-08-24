@@ -1,3 +1,4 @@
-# timeout(1) depends on Linux prctl(PR_SET_CHILD_SUBREAPER); needs a
-# Darwin reaping strategy before it can build.
-T_NOBUILD=	yes
+# timeout: the bsdutils source uses Linux's child-subreaper API, which Darwin
+# has no equivalent for.  include/sys/prctl.h shims the two operations it
+# needs; see that header for the behavioural difference this leaves in the
+# default (non---foreground) mode.
