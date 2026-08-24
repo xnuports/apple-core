@@ -1,6 +1,9 @@
 #ifndef _APFS_FSCTL_H_
 #define _APFS_FSCTL_H_
 
+#include <sys/ioccom.h>
+#include <stdint.h>
+
 struct xdstream_obj_id {
 	char *xdi_name;
 	int xdi_xdtream_obj_id;
