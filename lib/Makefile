@@ -39,7 +39,7 @@ LIBUTIL_OBJS+=	${OBJBASE}/libutil/${f:R}.o
 .endfor
 
 all: ${OBJBASE}/libutil.a ${OBJBASE}/libxo.a ${OBJBASE}/libnetcmds.a \
-	${OBJBASE}/libtelnet.a
+	${OBJBASE}/libtelnet.a ${OBJBASE}/libfsck_hfs.a
 
 # --- libnetcmds ---------------------------------------------------
 #
@@ -171,12 +171,6 @@ ${OBJBASE}/libtelnet.a: ${LIBTELNET_OBJS}
 
 # --- libfsck_hfs ---------------------------------------------------
 #
-# NOT in `all`: dfalib needs the classic <Errors.h>, which Apple no longer
-# ships, so this target cannot compile yet (see mk/tool.d/fsck_hfs.mk).
-# Build it explicitly once that header is available:
-#
-#	bmake -C lib build/lib/libfsck_hfs.a
-#
 # fsck_hfs' support library, from the hfs submodule rather than lib/.
 # Sources are discovered so the dfalib set tracks upstream; DecompMakeData
 # is excluded -- it is a build-time generator with its own main(), not
@@ -192,9 +186,8 @@ LIBFSCKHFS_OBJS+=	${OBJBASE}/fsck_hfs/${f:T:R}.o
 .for f in ${LIBFSCKHFS_SRCS}
 ${OBJBASE}/fsck_hfs/${f:T:R}.o: ${LIBFSCKHFS_DIR}/${f}
 	@mkdir -p ${OBJBASE}/fsck_hfs
-	${CC} ${CPPFLAGS} -I${LIBFSCKHFS_DIR} -I${LIBFSCKHFS_DIR}/dfalib \
+	${CC} ${CPPFLAGS} -DBSD=1 -DDEBUG_BUILD=0 -I${LIBFSCKHFS_DIR} -I${LIBFSCKHFS_DIR}/dfalib \
 		-I${TOP}/src/hfs/fsck_hfs -I${TOP}/include \
-		-I${CARBONCORE_HDRS} \
 		${CFLAGS} -c ${.ALLSRC} -o ${.TARGET}
 .endfor
 
