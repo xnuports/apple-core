@@ -48,6 +48,7 @@ PROGS+=	diskdev_cmds/fstyp.tproj fstyp sbin
 PROGS+=	diskdev_cmds/fstyp.tproj fstyp_msdos sbin
 PROGS+=	diskdev_cmds/fstyp.tproj fstyp_ntfs sbin
 PROGS+=	diskdev_cmds/fstyp.tproj fstyp_udf sbin
+PROGS+=	hfs/fstyp_hfs fstyp_hfs sbin
 PROGS+=	diskdev_cmds/mount_devfs.tproj mount_devfs sbin
 PROGS+=	diskdev_cmds/mount_fdesc.tproj mount_fdesc sbin
 PROGS+=	diskdev_cmds/mount.tproj mount sbin
