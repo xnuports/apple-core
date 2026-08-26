@@ -58,3 +58,6 @@
 [submodule "src/hfs"]
 	path = src/hfs
 	url = https://github.com/xnuports/hfs.git
+[submodule "frameworks/src/OpenDirectory"]
+	path = frameworks/src/OpenDirectory
+	url = https://github.com/apple-oss-distributions/OpenDirectory.git
