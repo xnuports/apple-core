@@ -67,3 +67,6 @@
 [submodule "src/AKCmds"]
 	path = src/AKCmds
 	url = https://github.com/Remorix/AKCmds.git
+[submodule "src/PlistBuddy"]
+	path = src/PlistBuddy
+	url = https://github.com/Remorix/PlistBuddy.git
