@@ -61,3 +61,6 @@
 [submodule "frameworks/src/OpenDirectory"]
 	path = frameworks/src/OpenDirectory
 	url = https://github.com/apple-oss-distributions/OpenDirectory.git
+[submodule "src/foundation_cmds"]
+	path = src/foundation_cmds
+	url = https://github.com/Remorix/foundation_cmds.git
