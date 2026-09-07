@@ -78,7 +78,7 @@ clean:
 .if defined(T_SRCS)
 SRCS=	${T_SRCS}
 .else
-_RAW!=		ls ${T_SRCDIR}/*.c ${T_SRCDIR}/*.cc ${T_SRCDIR}/*.cpp ${T_SRCDIR}/*.y ${T_SRCDIR}/*.l 2>/dev/null || true
+_RAW!=		ls ${T_SRCDIR}/*.c ${T_SRCDIR}/*.m ${T_SRCDIR}/*.cc ${T_SRCDIR}/*.cpp ${T_SRCDIR}/*.y ${T_SRCDIR}/*.l 2>/dev/null || true
 SRCS!=		for f in ${_RAW}; do basename "$$f"; done 2>/dev/null || true
 .endif
 
