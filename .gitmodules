@@ -64,3 +64,6 @@
 [submodule "src/foundation_cmds"]
 	path = src/foundation_cmds
 	url = https://github.com/Remorix/foundation_cmds.git
+[submodule "src/AKCmds"]
+	path = src/AKCmds
+	url = https://github.com/Remorix/AKCmds.git
