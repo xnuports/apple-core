@@ -70,3 +70,6 @@
 [submodule "src/PlistBuddy"]
 	path = src/PlistBuddy
 	url = https://github.com/Remorix/PlistBuddy.git
+[submodule "src/BomCmds"]
+	path = src/BomCmds
+	url = https://github.com/Remorix/BomCmds.git
